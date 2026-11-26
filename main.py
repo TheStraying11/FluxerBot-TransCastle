@@ -4,7 +4,6 @@ load_dotenv()
 
 import os
 import fluxer
-from fluxer.ext.commands import has_permissions
 
 bot = fluxer.Bot(command_prefix="!", intents=fluxer.Intents.default())
 
@@ -16,7 +15,7 @@ async def on_ready():
     print(f"Logged in as {bot.user.username}")
 
 @bot.command()
-@has_permissions(manage_guild=True)
+@fluxer.has_permission(manage_guild=True)
 async def reload(ctx: fluxer.Message, cog: str = "main_cog"):
     try:
         if cog not in bot.extensions:
