@@ -10,7 +10,7 @@ bot = fluxer.Bot(command_prefix="!", intents=fluxer.Intents.default())
 
 @bot.event
 async def on_ready():
-    async for cog in os.listdir('./cogs'):
+    for cog in os.listdir('./cogs'):
         await bot.load_extension(f'cogs.{cog[:-3]}')
     print(f"Logged in as {bot.user.username}")
 
